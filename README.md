@@ -75,7 +75,7 @@ Our cancer detection models have been evaluated using:
 - **Skin Cancer Model**: 81% accuracy, 80% sensitivity
 - **Brain Cancer Model**: 90% accuracy, 89% sensitivity
 - **Oral Cancer Model**: 88.3% accuracy, 89.7% sensitivity
-- **Kidney Cancer Model**: 90.6% accuracy, 91.2% sensitivity
+- **Kidney Cancer Model**: 97.6% accuracy, 98.2% sensitivity
 
 Our models were trained on diverse datasets comprising thousands of medical images across various conditions, ensuring robust performance across different patient demographics.
 
