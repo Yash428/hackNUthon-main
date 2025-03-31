@@ -1,0 +1,671 @@
+.message-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: transparent;
+  position: relative;
+  padding-bottom: 80px; /* Space for input */
+}
+
+.message-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.date-divider {
+  text-align: center;
+  padding: 5px 15px;
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #e2e8f0;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin: 10px auto;
+  max-width: max-content;
+  backdrop-filter: blur(4px);
+}
+
+.message {
+  display: flex;
+  margin-bottom: 16px;
+  width: 100%;
+  position: relative;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.user-message {
+  width: 100%;
+}
+
+.bot-message {
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.message-content {
+  max-width: 70% !important;
+  box-shadow: 0 1px 3px var(--chatbot-shadow) !important;
+  overflow: hidden !important;
+  padding: 1rem !important;
+  border-radius: 1rem !important;
+  position: relative !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.user-message .message-content {
+  background-color: var(--chatbot-user-message-bg) !important;
+  color: var(--chatbot-user-message-text) !important;
+  border-top-right-radius: 0.25rem !important;
+  text-align: right !important;
+  margin-left: auto !important;
+}
+
+.user-text {
+  text-align: right !important;
+  margin: 0 !important;
+  color: var(--chatbot-user-message-text) !important;
+  word-break: break-word !important;
+}
+
+.user-strong, 
+.user-em {
+  color: var(--chatbot-user-message-text) !important;
+}
+
+.user-strong {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  padding: 0 3px !important;
+  border-radius: 2px !important;
+}
+
+.bot-message .message-content {
+  background-color: var(--chatbot-bot-message-bg) !important;
+  color: var(--chatbot-bot-message-text) !important;
+  border-top-left-radius: 0.25rem !important;
+}
+
+.message-time {
+  opacity: 0.7 !important;
+  font-size: 0.75rem !important;
+  margin-top: 0.5rem !important;
+  display: block !important;
+  text-align: right !important;
+}
+
+.user-message .message-time {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.message-avatar {
+  min-width: 36px !important;
+  min-height: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 8px !important;
+  flex-shrink: 0 !important;
+}
+
+.bot-message .message-avatar {
+  background-color: #8b5cf6 !important; /* Purple */
+  color: white !important;
+}
+
+.user-message .message-avatar {
+  background-color: #14b8a6 !important; /* Teal */
+  color: white !important;
+}
+
+.message-avatar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.welcome-message {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
+  border-radius: 16px;
+  padding: 30px;
+  text-align: center;
+  margin: auto;
+  max-width: 80%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message h2 {
+  color: var(--cancer-blue);
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.welcome-message p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Message with code blocks */
+.contains-code .message-content {
+  padding: 8px;
+}
+
+.message-text-with-code {
+  display: flex;
+  flex-direction: column;
+}
+
+.regular-text {
+  padding: 8px;
+}
+
+.code-block-wrapper {
+  margin: 0.75rem 0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+  width: 100% !important;
+}
+
+.code-block-header {
+  background-color: #0f172a !important;
+  padding: 0.5rem 1rem !important;
+  color: #94a3b8 !important;
+  font-size: 0.8rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.code-block-content {
+  padding: 1rem !important;
+  overflow-x: auto !important;
+}
+
+.code-display {
+  margin: 0 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  color: #e2e8f0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+.inline-code {
+  background-color: rgba(226, 232, 240, 0.15) !important;
+  color: #f43f5e !important; /* Rose color for inline code */
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 0.25rem !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.85em !important;
+  white-space: pre-wrap !important;
+}
+
+.user-message .inline-code {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+/* File attachments */
+.file-attachment {
+  margin-top: 12px !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  background-color: rgba(226, 232, 240, 0.3) !important;
+  padding: 8px !important;
+  width: 100% !important;
+}
+
+.user-message .file-attachment {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.file-icon {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(14, 165, 233, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.file-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--cancer-blue);
+}
+
+.user-message .file-icon svg {
+  color: white;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.file-name {
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--cancer-blue);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-message .file-name {
+  color: white;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.user-message .file-size {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.image-preview {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .message-content {
+    max-width: 80% !important;
+    padding: 0.75rem !important;
+  }
+  
+  .message-avatar {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+  }
+  
+  .welcome-message {
+    max-width: 100%;
+    padding: 20px;
+  }
+}
+
+/* Add these styles to improve message formatting */
+
+/* Formatted response styles */
+.formatted-response {
+  line-height: 1.5;
+}
+
+.response-paragraph {
+  margin-bottom: 0.75rem;
+}
+
+.response-paragraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Medical value highlighting */
+.medical-value {
+  color: #f59e0b !important; /* Amber for numbers and measurements */
+  font-weight: 600 !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  padding: 0 0.2rem !important;
+  border-radius: 0.2rem !important;
+}
+
+.user-message .medical-value {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Make bot messages more readable */
+.bot-message .message-content {
+  background-color: #f3f9ff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  max-width: 85%;
+}
+
+.bot-message .formatted-response strong {
+  color: #3b82f6; /* Blue for important terms */
+  font-weight: 600;
+}
+
+/* Code display improvements */
+.code-block-wrapper {
+  margin: 0.75rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+
+.code-block-header {
+  background-color: #0f172a;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.code-block-content {
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.code-display {
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.inline-code {
+  background-color: rgba(148, 163, 184, 0.1);
+  border-radius: 0.25rem;
+  padding: 0.1rem 0.3rem;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #e11d48;
+}
+
+/* User messages styled differently */
+.user-message .message-content {
+  background-color: #3b82f6 !important;
+  color: white !important;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  max-width: 85%;
+}
+
+/* Message bubbles with better shape */
+.message-content {
+  position: relative;
+}
+
+.bot-message .message-content:before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 15px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f3f9ff;
+}
+
+.user-message .message-content:after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 15px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #3b82f6 !important;
+}
+
+/* Additional CSS for improved message formatting */
+
+/* Reset and clear conflicting styles */
+.formatted-response p,
+.regular-text p {
+  margin: 0 0 1rem 0 !important;
+  padding: 0 !important;
+  line-height: 1.6 !important;
+}
+
+.formatted-response p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.formatted-response, 
+.regular-text {
+  width: 100% !important;
+}
+
+/* Term highlighting styles */
+.highlight-term {
+  color: white !important; /* White for highlighted terms in user messages */
+  font-weight: 600 !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  padding: 0 0.2rem !important;
+  border-radius: 0.2rem !important;
+}
+
+.bot-message .highlight-term {
+  color: #0ea5e9 !important; /* Sky blue for bot messages */
+  background-color: rgba(14, 165, 233, 0.1) !important;
+}
+
+.medical-term {
+  color: #2563eb !important; /* Blue for medical terms */
+  font-weight: 600 !important;
+}
+
+.user-message .medical-term {
+  color: white !important;
+  text-decoration: underline !important;
+}
+
+/* List styling */
+.response-list-container {
+  margin-bottom: 1rem !important;
+  width: 100% !important;
+}
+
+.list-item {
+  position: relative !important;
+  padding-left: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+  line-height: 1.5 !important;
+}
+
+.list-item.numbered {
+  counter-increment: item !important;
+}
+
+.list-item.numbered .list-marker:before {
+  content: counter(item) "." !important;
+  position: absolute !important;
+  left: 0 !important;
+  color: #3b82f6 !important;
+  font-weight: 600 !important;
+}
+
+.user-message .list-item.numbered .list-marker:before {
+  color: white !important;
+}
+
+.list-item.bullet .list-marker:before {
+  content: "•" !important;
+  position: absolute !important;
+  left: 0.3rem !important;
+  color: #3b82f6 !important;
+  font-weight: 600 !important;
+  font-size: 1.2em !important;
+}
+
+.user-message .list-item.bullet .list-marker:before {
+  color: white !important;
+}
+
+/* Message content styling */
+.message-content {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+}
+
+.bot-message .message-content {
+  background-color: #f0f9ff !important; /* Lighter blue background */
+  color: #0f172a !important; /* Dark text for contrast */
+  font-size: 0.95rem !important;
+}
+
+.user-message .message-content {
+  background-color: #3b82f6 !important;
+  color: white !important;
+  font-size: 0.95rem !important;
+}
+
+/* Code block styling */
+.code-block-wrapper {
+  margin: 0.75rem 0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+  background-color: #1e293b !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.code-block-header {
+  background-color: #0f172a !important;
+  padding: 0.5rem 1rem !important;
+  color: #94a3b8 !important;
+  font-size: 0.8rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.code-block-content {
+  padding: 1rem !important;
+  overflow-x: auto !important;
+}
+
+.code-display {
+  margin: 0 !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  color: #e2e8f0 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+}
+
+.inline-code {
+  background-color: rgba(226, 232, 240, 0.15) !important;
+  color: #f43f5e !important; /* Rose color for inline code */
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 0.25rem !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-size: 0.85em !important;
+  white-space: pre-wrap !important;
+}
+
+/* Ensure user and bot messages have correct background and bubble shape */
+.message-content:before,
+.message-content:after {
+  content: '' !important;
+  position: absolute !important;
+  top: 15px !important;
+  border-width: 8px !important;
+}
+
+.bot-message .message-content:before {
+  left: -8px !important;
+  border-right: 8px solid var(--chatbot-bot-message-bg) !important;
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-left: 0 !important;
+}
+
+.user-message .message-content:after {
+  right: -8px !important;
+  border-left: 8px solid var(--chatbot-user-message-bg) !important;
+  border-top: 8px solid transparent !important;
+  border-bottom: 8px solid transparent !important;
+  border-right: 0 !important;
+}
+
+/* Force the avatar size */
+.message-avatar {
+  min-width: 36px !important;
+  min-height: 36px !important;
+}
+
+/* Make the timestamps more subtle */
+.message-time {
+  opacity: 0.7 !important;
+  font-size: 0.75rem !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Improve input field spacing */
+.message-input-container {
+  margin-top: 8px !important;
+}
+
+.chatbot-dark .message-list {
+  background-color: var(--chatbot-bg);
+  color: var(--chatbot-text);
+}
+
+.chatbot-dark .message-content {
+  box-shadow: 0 1px 3px var(--chatbot-shadow) !important;
+}
+
+.chatbot-dark .user-message .message-content {
+  background-color: var(--chatbot-user-message-bg) !important;
+  color: var(--chatbot-user-message-text) !important;
+}
+
+.chatbot-dark .user-text {
+  color: var(--chatbot-user-message-text) !important;
+}
+
+.chatbot-dark .user-strong, 
+.chatbot-dark .user-em {
+  color: var(--chatbot-user-message-text) !important;
+}
+
+.chatbot-dark .bot-message .message-content {
+  background-color: var(--chatbot-bot-message-bg) !important;
+  color: var(--chatbot-bot-message-text) !important;
+}
+
+.chatbot-dark .bot-message .message-content:before {
+  border-right-color: var(--chatbot-bot-message-bg) !important;
+}
+
+.chatbot-dark .user-message .message-content:after {
+  border-left-color: var(--chatbot-user-message-bg) !important;
+}
+
+.chatbot-dark .message-avatar {
+  background-color: var(--chatbot-dark) !important;
+}
+
+.chatbot-dark .date-divider {
+  background-color: rgba(50, 50, 70, 0.1);
+  color: var(--chatbot-text);
+} 
